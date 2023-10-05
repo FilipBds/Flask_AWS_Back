@@ -12,13 +12,7 @@ import secrets
 # Generate a secure secret key
 
 secret_key = secrets.token_hex(32)
-application.config['MAIL_SERVER'] = 'smtp.gmail.com'
-application.config['MAIL_PORT'] = 587
-application.config["MAIL_USERNAME"] = 'bytelinksrl@gmail.com'
-application.config["MAIL_PASSWORD"] = 'dyan kyvw cvqs yhf'
-application.config['MAIL_USE_TLS'] = True  # Use TLS encryption
 
-mail = Mail(application)
 
 # Set the SSL certificate file location to resolve any SSL certificate issues
 os.environ['SSL_CERT_FILE'] = certifi.where()

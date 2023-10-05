@@ -840,5 +840,6 @@ def update_profile():
 
     return jsonify({'message': 'Profile updated successfully'})
 
-app.run()
+application.run(host='0.0.0.0', port=80)
+
 

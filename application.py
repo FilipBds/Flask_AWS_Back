@@ -12,7 +12,6 @@ import secrets
 # Generate a secure secret key
 
 secret_key = secrets.token_hex(32)
-application.config['SECRET_KEY'] = secret_key
 application.config['MAIL_SERVER'] = 'smtp.gmail.com'
 application.config['MAIL_PORT'] = 587
 application.config["MAIL_USERNAME"] = 'bytelinksrl@gmail.com'
@@ -766,4 +765,4 @@ def update_profile():
 
     return jsonify({'message': 'Profile updated successfully'})
 
-
+application.config['SECRET_KEY'] = secret_key

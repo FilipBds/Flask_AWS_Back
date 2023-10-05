@@ -114,8 +114,6 @@ def verify_and_change_password():
 
 
 
-urls = ['https://thums.s3.eu-central-1.amazonaws.com/images/ben1.jpg', 'https://thums.s3.eu-central-1.amazonaws.com/images/ben2.jpg',
-        'https://thums.s3.eu-central-1.amazonaws.com/images/ben3.jpg', 'https://thums.s3.eu-central-1.amazonaws.com/images/ben4.jpg']
 
 @application.route('/add_notification', methods=['POST'])
 @jwt_required()
@@ -199,7 +197,8 @@ def sign_up():
     username = request.json.get('username')
     profile_pic = request.json.get('pro_pic')
     name = request.json.get('name')
-    print(name)
+    urls = ['https://thums.s3.eu-central-1.amazonaws.com/images/ben1.jpg', 'https://thums.s3.eu-central-1.amazonaws.com/images/ben2.jpg',
+        'https://thums.s3.eu-central-1.amazonaws.com/images/ben3.jpg', 'https://thums.s3.eu-central-1.amazonaws.com/images/ben4.jpg']
 
     existing_user = collection.find_one({'email': email})
     if existing_user:

@@ -40,6 +40,39 @@ except pymongo.errors.ConnectionFailure as e:
     print("Could not connect to MongoDB: %s" % e)
 
 
+@application.route('/send_verification_code', methods=['POST'])
+def send_verification_code():
+
+    data = request.get_json()
+    email = data.get('email')
+    user = collection.find_one({'email': email})
+
+    if not user:
+        return jsonify({'error': 'User not found'}), 404
+
+    # Generate a random verification code
+    verification_code = ''.join(random.choices(string.digits, k=6))
+
+    # Store the verification code in the database (replace 'verification_code_field' with actual field name)
+    collection.update_one({'_id': user['_id']}, {
+                          '$set': {'verification_code_field': verification_code}})
+
+    sender = 'noreply@app.com'
+    msg = Message('Reset Password Verfication Code',
+                  sender=sender, recipients=[email])
+    email_body = f"Hello {user['name']},\n\n"
+    email_body += "You have requested to reset your password. Please use the following verification code to proceed:\n\n"
+    email_body += f"Verification Code: {verification_code}\n\n"
+    email_body += "-PullBox"
+    msg.body = email_body
+
+    try:
+        mail.send(msg)
+        return jsonify({'message': 'Verification code sent successfully'})
+    except Exception as e:
+        print(e)
+        return jsonify({'message': 'Verification code not sent'})
+
 
 
 @application.route('/add_notification', methods=['POST'])

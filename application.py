@@ -840,6 +840,7 @@ def update_profile():
 
     return jsonify({'message': 'Profile updated successfully'})
 
-application.run()
+if __name__ == "__main__":
+    app.run()
 
 

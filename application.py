@@ -840,11 +840,5 @@ def update_profile():
 
     return jsonify({'message': 'Profile updated successfully'})
 
-# Rest of your code...
-# ... Existing code ...
-
-# Route to send verification code via email
-
-
-# ... Rest of your code ...
+app.run()
 

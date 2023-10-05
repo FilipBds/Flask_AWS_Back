@@ -21,8 +21,12 @@ application = Flask(__name__)
 bcrypt = Bcrypt(application)
 jwt = JWTManager(application)
 
-# Connect to MongoDB
-# Connect to MongoDB
+application.config['MAIL_SERVER'] = 'smtp.gmail.com'
+application.config['MAIL_PORT'] = 587
+application.config["MAIL_USERNAME"] = 'bytelinksrl@gmail.com'
+application.config["MAIL_PASSWORD"] = 'dyan kyvw cvqs yhf'
+application.config['MAIL_USE_TLS'] = True 
+
 try:
     client = pymongo.MongoClient(
         "mongodb+srv://Mark_Jeff:1234@cluster0.0jh9bwk.mongodb.net/?retryWrites=true&w=majority")

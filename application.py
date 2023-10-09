@@ -8,6 +8,12 @@ from bson import json_util, ObjectId
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from flask import make_response
 import secrets
+import string
+
+
+#
+
+
 
 # Generate a secure secret key
 
@@ -26,7 +32,7 @@ application.config['MAIL_PORT'] = 587
 application.config["MAIL_USERNAME"] = 'bytelinksrl@gmail.com'
 application.config["MAIL_PASSWORD"] = 'dyan kyvw cvqs yhf'
 application.config['MAIL_USE_TLS'] = True 
-
+mail = Mail(application)
 try:
     client = pymongo.MongoClient(
         "mongodb+srv://Mark_Jeff:1234@cluster0.0jh9bwk.mongodb.net/?retryWrites=true&w=majority")
